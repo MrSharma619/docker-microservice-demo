@@ -1,7 +1,7 @@
 version: '3.9'
 services:
   send-object:
-    image: jinja619/docker-send-object:v1.0
+    image: <your_docker_id>/docker-send-object:v1.0
     ports:
       - "8080:8080"
     restart: always
@@ -9,7 +9,7 @@ services:
       - data-compose-network
 
   receive-object:
-    image: jinja619/docker-receive-object:v1.0
+    image: <your_docker_id>/docker-receive-object:v1.0
     ports:
       - "3010:8081"
     restart: always
