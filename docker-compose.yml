@@ -1,0 +1,25 @@
+version: '3.9'
+services:
+  send-object:
+    image: jinja619/docker-send-object:v1.0
+    ports:
+      - "8080:8080"
+    restart: always
+    networks:
+      - data-compose-network
+
+  receive-object:
+    image: jinja619/docker-receive-object:v1.0
+    ports:
+      - "3010:8081"
+    restart: always
+    environment:
+      SEND_DATA_SERVICE_HOST: http://send-object
+    depends_on:
+      - send-object
+    networks:
+      - data-compose-network
+  
+# Networks to be created to facilitate communication between containers
+networks:
+  data-compose-network:
